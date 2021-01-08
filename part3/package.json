@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --production"
   },
   "devDependencies": {
     "ts-loader": "^8.0.14",
