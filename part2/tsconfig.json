@@ -1,0 +1,40 @@
+{
+  // 指定哪些ts文件需要被编译为js
+  "include": [
+    // src目录下的任意文件夹中的任意文件。
+    // 路径：**表示任意目录，*表示任意文件
+    "./src/**/*"
+  ],
+  "exclude": [
+    // src目录下的hello文件夹中的所有文件，都不编译为js文件。
+    // 因为默认值是["node_modules", "bower_components"]，所以基本不设置。
+    "./src/hello/**/*"
+  ],
+  // 继承配置文件。
+  // 会自动包含./src/extends目录下的tsconfig.extends.json中的所有配置信息。
+  "extends": "./src/extends/tsconfig.extends",
+  // 指定被编译文件的列表，没有就不编译了？一般情况下用不上了。
+//  "files": ["core.ts","sys.ts"],
+  // tsconfig 中，最最重要的东西。这是编译器的选项
+  "compilerOptions": {
+    // 指定被编译为的es版本。
+    // 想知道具体有几种版本，直接写abc，tsc编译，在错误提示中看看有几种。
+    "target": "ES2015",
+    // 使用哪种模块化的规范，基本上都是 es2015，也就是es6版本。
+    "module": "ES2015",
+    // 库，指定使用的库，一般情况是不动的。如果什么都不写，那么相当于什么库都没有使用。这样就没有提示了。
+    // 当代码不在浏览器中运行，就需要修改。
+    // 也就是说在浏览器中运行，基本不需要修改。
+    // 取值范围：
+    //'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'esnext', 'dom', 'dom.iterable'
+    //, 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy'
+    //, 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es
+    //2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2020.bigint', 'es20
+    //20.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', '
+    //esnext.string', 'esnext.promise', 'esnext.weakref'.
+//    "lib": ["DOM"]
+
+    // 编译之后的js代码放到哪里，这是我的项目重点关注的。
+    "outDir": "./dist"
+  }
+}
