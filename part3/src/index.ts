@@ -8,6 +8,11 @@ function show(content: string) {
     return content
 }
 
+const test1 = {name: test, age: 22}
+console.log(test1)
+
 console.log(show('hello world 11111111'))
 
 console.log(test)
+
+console.log(Promise)
