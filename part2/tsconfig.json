@@ -41,6 +41,22 @@
     // 这样相当于可以编译工程中的index.js文件。
     // 只有amd和system模式才支持这个。
     // 这个用得不多，结合打包工具去做。
-    "outFile": "./dist/app.js"
+//    "outFile": "./dist/app.js",
+
+    // 允许使用js
+    // 模块是js写的
+    "allowJs": true,
+    // 和上面的allowJs是一套的，表示“是否检查js代码的语法”
+    // 比如一个变量的值是10，如果再给这个变量一个新的值 "a"， 那么就会报错。
+    // 这里其实是按照ts的语法去要求js。
+    // 大部分情况下是两个都是true或者false，根据需要来定吧。
+    "checkJs": true,
+    // 是否移除注释？
+    "removeComments": true,
+    // 不生成编译后的文件。true表示不生成，false表示生成。
+    // 基本上都是使用ts检查一下js的语法，很少使用。
+    "noEmit": false,
+    // 当有ts语法错误的时候，等于true就不生成编译文件，等于false继续生成。
+    "noEmitOnError": false
   }
 }
