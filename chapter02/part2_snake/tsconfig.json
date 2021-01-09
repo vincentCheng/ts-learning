@@ -1,0 +1,24 @@
+// 基本上这三个就足够了。
+{
+  // tsconfig 中，最最重要的东西。这是编译器的选项
+  "compilerOptions": {
+    // 使用哪种模块化的规范，基本上都是 es2015，也就是es6版本。
+    "module": "ES2015",
+    // 指定被编译为的es版本。
+    // 想知道具体有几种版本，直接写abc，tsc编译，在错误提示中看看有几种。
+    "target": "ES2015",
+    // 所有严格检查的总开关。
+    // 等于true，下面的所有检查都打开，不需要一项一项的打开。
+    // 基本上都会打开。
+    "strict": true,
+    "noEmitOnError": true,
+    // alias 在这里是本地编译，调试代码的时候使用。
+    // 在webpack.config.js中的resolve，是打包用的。
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  }
+}
