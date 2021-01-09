@@ -73,6 +73,34 @@ module.exports = {
                 // 要排除的文件，或者文件夹，一般排除 node_modules
                 // 这里仍然是正则表达式，只要是路径中有 node_modules 就不编译了。
                 exclude: /node_modules/
+            },
+            {
+                // 设置less文件的处理
+                test: /\.less$/,
+                // 注意这里的执行顺序是从下往上
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    // 对旧版本浏览器做兼容，例如加上前缀等等。
+                    // 使用 postcss-loader
+                    // 下面的格式适用于大多数场景。
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        "postcss-preset-env",
+                                        {
+                                            browser: "last 2 versions"
+                                        }
+                                    ]
+                                ]
+                            }
+                        }
+                    },
+                    "less-loader"
+                ]
             }
         ]
     },
@@ -81,7 +109,7 @@ module.exports = {
         // 只要是 .js 和 .ts 结尾的，都可以作为模块引用。
         // 否则import 会报错的
         extensions: ['.js', '.ts'],
-        alias:{
+        alias: {
             '@': path.resolve(__dirname, 'src')
         }
     },
