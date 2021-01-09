@@ -1,5 +1,93 @@
-body{
-  background-color: green;
-  // 这个比较新，不是每个浏览器都支持。
+// 设置变量
+@bg-color: #b7d4a8;
+
+// 清除默认样式
+* {
+  margin: 0;
+  padding: 0;
+
+  // 盒子模型的计算方式
+  // 宽度是360px 边框宽度是10px 总宽度仍然是360px
+  box-sizing: border-box;
+}
+
+body {
+  font: bold 20px "Courier New";
+}
+
+// 设置
+#main {
+  width: 360px;
+  height: 420px;
+  background-color: @bg-color;
+  margin: 100px auto;
+  border: 10px solid black;
+  border-radius: 10px;
+
+  // 开启弹性盒子模型
   display: flex;
+  // 主轴选择 垂直
+  flex-flow: column;
+  // 交叉轴对齐方式
+  align-items: center;
+  // 设置主轴多余空间的分配方式。space around 表示在元素周围。
+  justify-content: space-around;
+
+  // 舞台
+  #stage {
+    width: 304px;
+    height: 304px;
+    border: 2px solid black;
+    // 这个是stage相对于它本身流式布局的定位。
+    position: relative;
+
+    // 蛇的样式
+    #snake {
+      // 这个符号 & 是干嘛的？
+      // 表示同一个元素的伪元素，也就是snake下的div。在这里不用也是可以的。
+      & > div {
+        width: 10px;
+        height: 10px;
+        background-color: black;
+        // 虽然边框是1px，但是方块总的宽度还是10px。
+        border: 1px solid @bg-color;
+        // 蛇的位置需要改变，开启绝对定位，否则无法定位。
+        // 同时上面的 stage要开启相对定位。这个是stage相对于它本身流式布局的定位。
+        position: absolute;
+      }
+    }
+
+    #food {
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      left: 40px;
+      top: 100px;
+
+      background-color: red;
+      display: flex;
+      // 主轴选择横向，wrap表示可以换行。
+      flex-flow: row wrap;
+      // 主轴内容中 空间在中间
+      justify-content: space-between;
+      // 交叉轴内容中 空间在中间
+      align-content: space-between;
+      // 旋转45度
+      transform: rotate(45deg);
+
+      & > div {
+        width: 4px;
+        height: 4px;
+        background-color: black;
+      }
+    }
+  }
+
+  // 记分牌
+  #score-panel {
+    width: 300px;
+    display: flex;
+    // 主轴对齐
+    justify-content: space-between;
+  }
 }
