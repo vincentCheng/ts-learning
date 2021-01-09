@@ -3,7 +3,7 @@
  */
 (function () {
     /**
-     * 这里需要设置 getter 和setter
+     * 这里需要设置 getter 和setter，成为属性的存取器。
      */
     class Person {
         get name(): string {
@@ -13,6 +13,7 @@
         set name(value: string) {
             this._name = value;
         }
+
         private _name: string;
 
         get age(): number {
@@ -40,4 +41,17 @@
     per.age = -100
 
     console.log(per)
+
+    /**
+     * 直接将属性定义在构造函数
+     */
+    class NewPerson {
+        /**
+         * 这里不需要再写 this.name = name
+         * @param name
+         * @param age
+         */
+        constructor(public name: string = '', public age: number = 0) {
+        }
+    }
 })()
