@@ -76,6 +76,15 @@ module.exports = {
             }
         ]
     },
+    // 设置引用模块扩展
+    resolve: {
+        // 只要是 .js 和 .ts 结尾的，都可以作为模块引用。
+        // 否则import 会报错的
+        extensions: ['.js', '.ts'],
+        alias:{
+            '@': path.resolve(__dirname, 'src')
+        }
+    },
     plugins: [
         // 自动生成html文件并且引入相关的js脚本
         new htmlWebpackPlugin({
@@ -86,10 +95,4 @@ module.exports = {
         // 删除之前生成的dist文件夹
         new CleanWebpackPlugin()
     ],
-    // 设置引用模块扩展
-    resolve: {
-        // 只要是 .js 和 .ts 结尾的，都可以作为模块引用。
-        // 否则import 会报错的
-        extensions: ['.js', '.ts']
-    }
 }

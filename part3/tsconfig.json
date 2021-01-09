@@ -10,6 +10,14 @@
     // 所有严格检查的总开关。
     // 等于true，下面的所有检查都打开，不需要一项一项的打开。
     // 基本上都会打开。
-    "strict": true
+    "strict": true,
+    // alias 在这里是本地编译，调试代码的时候使用。
+    // 在webpack.config.js中的resolve，是打包用的。
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   }
 }
