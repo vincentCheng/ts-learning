@@ -25,7 +25,10 @@ module.exports = {
         filename: "bundle.js",
         // 告诉webpack不使用箭头函数，否则ie11不兼容。
         environment: {
-            arrowFunction: false
+            arrowFunction: false,
+            // 兼容ie10浏览器
+            // ie9就不行了，因为使用了一些flex。ie9需要使用相对定位。
+            const: false
         }
     },
     // 指定webpack打包需要使用的模块
